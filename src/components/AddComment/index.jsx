@@ -7,13 +7,14 @@ import axios from "../../axios"
 
 export const Index = ({user, postId}) => {
   const [text, setText] = React.useState('');
-
+  
   const onSubmit = async () => {
     try {
       const fields = {
         text,
         postId
       }
+      
       await axios.post('/comments', fields)
 
       setText('')
@@ -41,7 +42,7 @@ export const Index = ({user, postId}) => {
             fullWidth
             onChange={(e) => setText(e.target.value)}
           />
-          <Button type='submit' variant="contained">Sent</Button>
+          <Button type='submit' color={'info'} variant="contained">Sent</Button>
         </div>
         </form>
       </div>

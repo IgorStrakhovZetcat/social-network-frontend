@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Grid from '@mui/material/Grid';
@@ -24,6 +24,7 @@ export const Home = () => {
   const handleChange = (event, newValue) => {
     setHome(newValue);
   };
+  
 
   React.useEffect(() => {
     dispatch(fetchPosts())
@@ -40,13 +41,13 @@ export const Home = () => {
   }
 
   function getNewPosts() {
-    return[...posts.items].sort((a, b) => new Date(b.date) - new Date(a.date))
+    return [...posts.items].sort((a, b) => new Date(b.date) - new Date(a.date))
   }
 
   
   return (
     <>
-      <Tabs value={home} onChange={handleChange} style={{ marginBottom: 15 }} aria-label="basic tabs example">
+      <Tabs value={home} onChange={handleChange} style={{ marginBottom: 15, marginLeft: 50 }} aria-label="basic tabs example">
           <Tab value={'home'} label="New" />
           <Tab value={'popular'} label="Popular" />
       </Tabs>

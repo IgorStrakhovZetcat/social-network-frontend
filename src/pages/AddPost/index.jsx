@@ -60,7 +60,9 @@ export const AddPost = () => {
         imageUrl,
         date
       }
+      
 
+      
       const {data} = isEditing ? 
       await axios.patch(`/posts/${id}`, fields) : 
       await axios.post('/posts', fields)

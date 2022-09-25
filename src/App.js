@@ -8,11 +8,14 @@ import { fetchAuthMe, selectIsAuth } from "./redux/slices/auth";
 import { TagsFilter } from "./components/Tags/TagsFilter";
 
 import styles from './pages/Home/Home.module.scss'
+import { NavigationMenu } from "./components/NavigationMenu/NavigationMenu";
+import { Profile } from "./pages/Profiles/Profile";
+import { Friends } from "./pages/Friends/Friends";
 
 function App() {
   const dispatch = useDispatch()
   const isAuth = useSelector(selectIsAuth);
-
+  
   React.useEffect(() => {
     dispatch(fetchAuthMe())
   }, [])
@@ -39,6 +42,7 @@ function App() {
   return (
     <>
       <Header />
+      {isAuth ? <NavigationMenu/> : ''}
       <Container maxWidth="lg">
         <Routes>
           <Route path={'/'} element={<Home />} />
@@ -46,6 +50,8 @@ function App() {
           <Route path={'/posts/:id/edit'} element={<AddPost />} />
           <Route path={'/add-post'} element={<AddPost />} />
           <Route path={'/tag/:name'} element={<TagsFilter />} />
+          <Route path={'/profile/:id'} element={<Profile/>} />
+          <Route path={'/myfriends'} element={<Friends/>} />
           <Route path={'/login'} element={<Login />} />
           <Route path={'/register'} element={<Registration />} />
         </Routes>

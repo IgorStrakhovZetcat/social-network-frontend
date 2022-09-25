@@ -38,6 +38,7 @@ export const Registration = () => {
     }
     
     const data = await dispatch(fetchRegister(values))
+    
     if(!data.payload){
       alert('Registration is wrong')
     }
@@ -48,6 +49,10 @@ export const Registration = () => {
   }
   
   if(isAuth){
+    const fields = {
+      friends: []
+    }
+    axios.post('/friends', fields)
     return <Navigate to='/' />
   }
 
