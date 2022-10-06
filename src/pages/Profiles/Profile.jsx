@@ -31,11 +31,12 @@ export const Profile = () => {
     
     async function addToFriends() {
         try {
-            
             const idListFriends = [...friends.items].find(f => f.user._id === userData._id)._id
-            console.log(idListFriends)
+            
+            const getFriendsByUser = [...friends.items].find(f => f.user._id === userData._id).friends
+           
             const fields = {
-                friends: id
+                friends:  getFriendsByUser.join(' ') + ' ' + id
             }
             
             await axios.patch(`/friends/${idListFriends}`, fields)
@@ -63,7 +64,7 @@ export const Profile = () => {
                 <span>Email: {getUser().email}</span>
                 <br/>
 
-                {userData ? userData._id === getUser()._id ? <></> : isFriendsLoading ? <></> : <button onClick={addToFriends}>Add to friends</button> : <div></div>}
+                {userData ? userData._id === getUser()._id ? <></> : isFriendsLoading ? <></> : <button onClick={addToFriends}>Send a friend request</button> : <div></div>}
                 
             </div>
             

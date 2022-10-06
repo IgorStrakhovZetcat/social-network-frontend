@@ -7,6 +7,7 @@ import axios from "../../axios"
 
 export const Index = ({user, postId}) => {
   const [text, setText] = React.useState('');
+
   
   const onSubmit = async () => {
     try {
@@ -24,6 +25,7 @@ export const Index = ({user, postId}) => {
     }
   }
 
+  
 
   return (
     <>
